@@ -15,7 +15,7 @@ import warnings
 from statsmodels.tools.sm_exceptions import ConvergenceWarning
 warnings.simplefilter('ignore', ConvergenceWarning)
 
-joint_sales_orders=pd.read_excel('/workspaces/-round3---scmission2024---vanguard-s-code-/Data file/Cleaned data for sales order, product master.xlsx',sheet_name=4)
+joint_sales_orders=pd.read_excel('Data/Cleaned data for sales order, product master.xlsx',sheet_name=4)
 joint_sales_orders
 
 # Create a copy of the joint_sales_orders DataFrame with only 'Date' and 'Quantity in Kg' columns
@@ -77,19 +77,21 @@ mad_train = mean_absolute_error(filtered_data['Quantity in Kg'], fitted_values)
 mape_train = np.mean(np.abs((filtered_data['Quantity in Kg'] - fitted_values) / filtered_data['Quantity in Kg'])) * 100
 
 # Plot the original data, the fitted values, and the forecast
-plt.figure(figsize=(12, 8))
+plt.figure(figsize=(12, 6))
 plt.plot(time_series_1.index, time_series_1['Quantity in Kg'], label='Original Data')
 plt.plot(filtered_data.index, fitted_values, label='Fitted Holt Exponential Smoothing', linestyle='--')
 plt.plot(forecast_df.index, forecast_df['Forecasted Quantity in Kg'], label='Forecast', linestyle='--')
 plt.xlabel('Date')
 plt.ylabel('Quantity in Kg')
 plt.legend()
+plt.grid(True)
+plt.title('Double exponential smooting')
 
 # Annotate the plot with the error metrics
 
 error_text = f'RMSE: {rmse_train:.2f}\nMAD: {mad_train:.2f}\nMAPE: {mape_train:.2f}%'
 plt.gca().text(0.68, 0.95, error_text, transform=plt.gca().transAxes, fontsize=12, verticalalignment='top')
-plt.savefig('/workspaces/-round3---scmission2024---vanguard-s-code-/Pictures/Weekly/Double_expo_smoothing_at_2022_41.png')
+plt.savefig('/workspaces/hello/2_Pictures/Weekly/Double_expo_smoothing_at_2022_41.png.png')
 
 # Resample to monthly frequency
 fitted_monthly_df = filtered_data.resample('M').sum()

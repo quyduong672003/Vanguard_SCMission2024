@@ -12,7 +12,7 @@ from scipy.optimize import curve_fit
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 
-joint_sales_orders=pd.read_excel('/workspaces/-round3---scmission2024---vanguard-s-code-/Data file/Cleaned data for sales order, product master.xlsx',sheet_name=4)
+joint_sales_orders=pd.read_excel('/workspaces/hello/Data/Cleaned data for sales order, product master.xlsx',sheet_name=4)
 joint_sales_orders
 
 # Create a copy of the joint_sales_orders DataFrame with only 'Date' and 'Quantity in Kg' columns
@@ -74,10 +74,11 @@ plt.xlabel('Date')
 plt.ylabel('Quantity in Kg')
 plt.legend()
 plt.grid(True)
+plt.title('ARIMA(2,1,2) forecasting')
 # Annotate the plot with the error metrics
 error_text = f'RMSE: {rmse_train:.2f}\nMAD: {mad_train:.2f}\nMAPE: {mape_train:.2f}%'
 plt.gca().text(0.30, 0.95, error_text, transform=plt.gca().transAxes, fontsize=12, verticalalignment='top')
-plt.savefig('Weekly_ARIMA_projection.png')
+plt.savefig('/workspaces/hello/2_Pictures/Weekly/ARIMA_projection.png')
 
 # Save forecasted data and fitted values to an Excel file
 with pd.ExcelWriter('arima_fitted_and_forecasted_data.xlsx') as writer:

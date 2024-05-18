@@ -12,7 +12,7 @@ from scipy.optimize import curve_fit
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 
-joint_sales_orders=pd.read_excel('/workspaces/-round3---scmission2024---vanguard-s-code-/Data file/Cleaned data for sales order, product master.xlsx',sheet_name=4)
+joint_sales_orders=pd.read_excel('/workspaces/hello/Data/Cleaned data for sales order, product master.xlsx',sheet_name=4)
 joint_sales_orders
 
 # Create a copy of the joint_sales_orders DataFrame with only 'Date' and 'Quantity in Kg' columns
@@ -94,17 +94,18 @@ plt.xlabel('Date')
 plt.ylabel('Quantity in Kg')
 plt.legend()
 plt.grid(True)
+plt.title('Logarit forecasting')
 # Annotate the plot with the error metrics
 error_text = f'RMSE: {rmse_train:.2f}\nMAD: {mad_train:.2f}\nMAPE: {mape_train:.2f}%'
 plt.gca().text(0.30, 0.95, error_text, transform=plt.gca().transAxes, fontsize=12, verticalalignment='top')
 
-plt.savefig('/workspaces/-round3---scmission2024---vanguard-s-code-/Pictures/Weekly/Weekly_logarit_projection_at_2022_41.png')
+plt.savefig('/workspaces/hello/2_Pictures/Weekly/Logarit_projection_at_2022_41.png')
 
 # Resample to monthly frequency
 fitted_monthly_df = filtered_data.resample('M').sum()
 forecast_monthly_df = forecast_df.resample('M').sum()
 
 # Save the monthly data to an Excel file
-with pd.ExcelWriter('fitted_and_forecasted_monthly_data.xlsx') as writer:
+with pd.ExcelWriter('/workspaces/hello/0_Weekly_time_series_analysis/Monthly logarit projection.xlsx') as writer:
     fitted_monthly_df.to_excel(writer, sheet_name='Fitted Monthly Values')
     forecast_monthly_df.to_excel(writer, sheet_name='Forecasted Monthly Values')

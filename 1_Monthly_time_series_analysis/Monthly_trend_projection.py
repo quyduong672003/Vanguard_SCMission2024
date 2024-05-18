@@ -8,9 +8,9 @@ from sklearn.linear_model import LinearRegression
 from scipy.optimize import curve_fit
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-sales_orders = pd.read_excel('/workspaces/-round3---scmission2024---vanguard-s-code-/Data file/Cleaned data for sales order, product master.xlsx',sheet_name=None)
+sales_orders = pd.read_excel('/workspaces/hello/Data/Cleaned data for sales order, product master.xlsx',sheet_name=None)
 sales_orders
-joint_sales_orders=pd.read_excel('/workspaces/-round3---scmission2024---vanguard-s-code-/Data file/Cleaned data for sales order, product master.xlsx',sheet_name=4)
+joint_sales_orders=pd.read_excel('/workspaces/hello/Data/Cleaned data for sales order, product master.xlsx',sheet_name=4)
 joint_sales_orders
 
 # Assuming joint_sales_orders is your DataFrame
@@ -121,7 +121,7 @@ plt.grid(True)
 
 # Add MAD, RMSE, and MAPE annotations
 plt.annotate(f'Linear Regression MAD: {mad_linear:.2f}\nLinear Regression RMSE: {rmse_linear:.2f}\nLinear Regression MAPE: {mape_linear:.2f}%', 
-             xy=(0.01, 0.85), xycoords='axes fraction', color='blue')
+             xy=(0.01, 0.85), xycoords='axes fraction', color='black')
 plt.annotate(f'Logarithmic Regression MAD: {mad_log:.2f}\nLogarithmic Regression RMSE: {rmse_log:.2f}\nLogarithmic Regression MAPE: {mape_log:.2f}%', 
-             xy=(0.3, 0.85), xycoords='axes fraction', color='red')
-plt.savefig('/workspaces/-round3---scmission2024---vanguard-s-code-/Pictures/Trend_projection_1.png')
+             xy=(0.3, 0.85), xycoords='axes fraction', color='black')
+plt.savefig('/workspaces/hello/2_Pictures/Monthly/Combined_projection.png')
