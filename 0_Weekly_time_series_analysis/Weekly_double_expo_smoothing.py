@@ -85,7 +85,7 @@ plt.xlabel('Date')
 plt.ylabel('Quantity in Kg')
 plt.legend()
 plt.grid(True)
-plt.title('Double exponential smooting')
+plt.title('Double exponential smooting (Alpha = 0.19, Beta = 0.04)')
 
 # Annotate the plot with the error metrics
 

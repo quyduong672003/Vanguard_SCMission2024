@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 from scipy.optimize import curve_fit
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-joint_sales_orders=pd.read_excel('/workspaces/-round3---scmission2024---vanguard-s-code-/Data file/Cleaned data for sales order, product master.xlsx',sheet_name=4)
+joint_sales_orders=pd.read_excel('/workspaces/hello/Data/Cleaned data for sales order, product master.xlsx',sheet_name=4)
 joint_sales_orders
 
 # Assuming joint_sales_orders is your DataFrame
@@ -37,6 +37,9 @@ time_series_1.drop(['Year', 'Month'], axis=1, inplace=True)
 # Set 'Date' column as index
 time_series_1.set_index('Month_Year', inplace=True)
 
+# Write the DataFrame to an Excel file
+output_file_path = '/workspaces/hello/1_Monthly_time_series_analysis/Monthly_time_series_output.xlsx'
+time_series_1.to_excel(output_file_path, sheet_name='Time_Series_Data')
 
 # Train-test split
 train = time_series_1.loc[:'2022-10-01']
